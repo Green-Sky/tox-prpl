@@ -1,14 +1,15 @@
-tox-prpl - Tox Pidgin Protocol Plugin
+# tox-prpl
 
-http://tox.dhs.org/
+Tox Pidgin Protocol Plugin
 
-Dependencies
 
-* glib: should be available in the repositories of your distribution)
+## Dependencies
+
+* glib: should be available in the repositories of your distribution
 * ncurses: should be in your repo
-* libpurple: https://developer.pidgin.im/) should be in your repo as well
-* libsodium: http://download.libsodium.org/libsodium/releases/
-* Tox: https://github.com/jin-eld/ProjectTox-Core shared lib branch
+* [libpurple](https://developer.pidgin.im/) (should be in your repo as well)
+* [libsodium](https://download.libsodium.org/libsodium/releases/)
+* [Tox](https://github.com/TokTok/c-toxcore/)
 
 Additionally you will need gcc, autoconf, automake, libtool and maybe
 a few other things for actually compiling the code.
@@ -26,15 +27,15 @@ do not provide the prefix, the installation will go to /usr/local/ which will
 require root priveleges for the _make install_ step.
 
 
-libsodium
+### libsodium
 
 If you cloned libsodium from git you will have to run ./autogen.sh to generate
 the configure script, if you downloaded a release tarball then configure will
 already be there.
 
-./configure --prefix=/home/youruser/Tox/sysroot
-make
-make install
+	./configure --prefix=/home/youruser/Tox/sysroot
+	make
+	make install
 
 This will install libsodium headers in /home/youruser/Tox/sysroot/include
 and the library in /home/youruser/Tox/sysroot/lib.
@@ -42,54 +43,44 @@ and the library in /home/youruser/Tox/sysroot/lib.
 Remember the /home/youruser/Tox/sysroot/ path, we will need it later on.
 
 
-Tox core
-
-Clone the repo if you did not do so already:
-
-git clone https://github.com/jin-eld/ProjectTox-Core.git
-cd ProjectTox-Core
+### Tox core
 
 Generate the configure script:
 
-autoreconf -i
+	autoreconf -i
 
 Tell configure where to find dependencies and where to install the library,
 compile and install:
 
-./configure --with-dependency-search=/home/youruser/Tox/sysroot/ --prefix=/home/youruser/Tox/sysroot/
-make
-make install
+	./configure --with-dependency-search=/home/youruser/Tox/sysroot/ --prefix=/home/youruser/Tox/sysroot/
+	make
+	make install
 
 
-tox-prpl
-
-Clone the repo if you did not do so already:
-
-git clone https://github.com/jin-eld/tox-prpl.git
-cd tox-prpl
+## Building tox-prpl
 
 Generate the configure script:
 
-autoreconf -i
+	autoreconf -i
 
 Tell configure where to find dependencies and where to install the plugin,
 compile and install:
 
-./configure --with-dependency-search=/home/youruser/Tox/sysroot/ --prefix=/home/youruser/Tox/sysroot/
-make
-make install
+	./configure --with-dependency-search=/home/youruser/Tox/sysroot/ --prefix=/home/youruser/Tox/sysroot/
+	make
+	make install
 
 Unless you also compiled pidgin and installed it in your above "sysroot", the
 plugin will not be found, so as a last step you need to:
 
-mkdir ~/.purple/plugins/
-cp /home/youruser/Tox/sysroot/lib/purple-2/libtox.so ~/.purple/plugins/
+	mkdir ~/.purple/plugins/
+	cp /home/youruser/Tox/sysroot/lib/purple-2/libtox.so ~/.purple/plugins/
 
 If you used a non standard installation location for the library, as above,
 then you have to add it to your environment before running pidgin.
 
 In the terminal where you start pidgin (assuming bash):
 
-export LD_LIBRARY_PATH=/home/youruser/Tox/sysroot/lib
+	export LD_LIBRARY_PATH=/home/youruser/Tox/sysroot/lib
 
 Now you are ready to start pidgin and to test the plugin.
