@@ -1,1 +1,1 @@
-cc -Wall -Wpedantic -g -rdynamic -fPIC -shared -o libtoxprpl.so src/toxprpl.c $(pkg-config --libs --cflags glib-2.0) $(pkg-config --libs --cflags purple) -I../toxcore/ -L../toxcore/build -ltoxcore
+cc -std=c99 -Wall -Wpedantic -g -fstack-protector-all -rdynamic -fPIC -shared -o libtoxprpl.so src/toxprpl.c $(pkg-config --libs --cflags glib-2.0) $(pkg-config --libs --cflags purple) -I../toxcore/ -L../toxcore/build -ltoxcore
