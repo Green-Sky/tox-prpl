@@ -55,6 +55,7 @@
 
 #include <tox/tox.h>
 #include <tox/toxencryptsave.h>
+
 #include <network.h>
 
 #define PURPLE_PLUGINS
@@ -79,9 +80,12 @@
 
 #define TOX_ID_SIZE 64
 #define TOXPRPL_ID "prpl-jin_eld-tox"
-#define DEFAULT_SERVER_KEY "A09162D68618E742FFBCA1C2C70385E6679604B2D80EA6E84AD0996A1AC8A074"
+/*#define DEFAULT_SERVER_KEY "A09162D68618E742FFBCA1C2C70385E6679604B2D80EA6E84AD0996A1AC8A074"*/
+/*#define DEFAULT_SERVER_PORT 33445*/
+/*#define DEFAULT_SERVER_IP   "tox.zodiaclabs.org"*/
+#define DEFAULT_SERVER_KEY "B6626D386BE7E3ACA107B46F48A5C4D522D29281750D44A0CBA6A2721E79C951"
 #define DEFAULT_SERVER_PORT 33445
-#define DEFAULT_SERVER_IP   "tox.zodiaclabs.org"
+#define DEFAULT_SERVER_IP   "tox2.plastiras.org"
 #define DEFAULT_ACCOUNT_PATH "toxedpidgin"
 
 #define DEFAULT_REQUEST_MESSAGE _("Please allow me to add you as a friend!")
